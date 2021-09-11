@@ -5,7 +5,7 @@ import random
 import pandas as pd
 
 df = pd.read_csv("C:/Users/Bajwa/Downloads/medium_data.csv")
-data = df["claps"].tolist()
+data = df["reading_time"].tolist()
 
 mean = statistics.mean(data)
 st_dev = statistics.stdev(data)
@@ -38,18 +38,17 @@ thd_std_deviation_start, thd_std_deviation_end = mean_of_sampling_dist- (3*stdev
 
 
 scatter2 = ff.create_distplot([mean_list],["samplingData"],show_hist = False)
-scatter2.add_trace(go.Scatter(x= [mean_of_sampling_dist,mean_of_sampling_dist] , y =[0,0.2] , mode = 'lines'))
-scatter2.add_trace(go.Scatter(x=[first_std_deviation_start, first_std_deviation_start], y=[0, 0.17], mode="lines", name="STANDARD DEVIATION 1 START"))
-scatter2.add_trace(go.Scatter(x=[sec_std_deviation_start, sec_std_deviation_start], y=[0, 0.17], mode="lines", name="STANDARD DEVIATION 2 START"))
-scatter2.add_trace(go.Scatter(x=[thd_std_deviation_start, thd_std_deviation_start], y=[0, 0.17], mode="lines", name="STANDARD DEVIATION 3 START"))
-scatter2.add_trace(go.Scatter(x=[first_std_deviation_end, first_std_deviation_end], y=[0, 0.17], mode="lines", name="STANDARD DEVIATION 1 END"))
-scatter2.add_trace(go.Scatter(x=[sec_std_deviation_end, sec_std_deviation_end], y=[0, 0.17], mode="lines", name="STANDARD DEVIATION 2 END"))
-scatter2.add_trace(go.Scatter(x=[thd_std_deviation_end, thd_std_deviation_end], y=[0, 0.17], mode="lines", name="STANDARD DEVIATION 3 END"))
-scatter2.add_trace(go.Scatter(x=[mean2,mean2], y=[0, 0.17], mode="lines", name="MEAN OF SAMPLING DATA "))
+scatter2.add_trace(go.Scatter(x= [mean_of_sampling_dist,mean_of_sampling_dist] , y =[0,0.8] , mode = 'lines'))
+scatter2.add_trace(go.Scatter(x=[first_std_deviation_start, first_std_deviation_start], y =[0,0.8], mode="lines", name="STANDARD DEVIATION 1 START"))
+scatter2.add_trace(go.Scatter(x=[sec_std_deviation_start, sec_std_deviation_start], y =[0,0.8], mode="lines", name="STANDARD DEVIATION 2 START"))
+scatter2.add_trace(go.Scatter(x=[thd_std_deviation_start, thd_std_deviation_start], y =[0,0.8], mode="lines", name="STANDARD DEVIATION 3 START"))
+scatter2.add_trace(go.Scatter(x=[first_std_deviation_end, first_std_deviation_end], y =[0,0.8], mode="lines", name="STANDARD DEVIATION 1 END"))
+scatter2.add_trace(go.Scatter(x=[sec_std_deviation_end, sec_std_deviation_end], y =[0,0.8], mode="lines", name="STANDARD DEVIATION 2 END"))
+scatter2.add_trace(go.Scatter(x=[thd_std_deviation_end, thd_std_deviation_end], y =[0,0.8], mode="lines", name="STANDARD DEVIATION 3 END"))
+scatter2.add_trace(go.Scatter(x=[mean2,mean2], y =[0,0.8], mode="lines", name="MEAN OF SAMPLING DATA "))
 scatter2.show()
 
 print("mean of sampling distribution is:",mean_of_sampling_dist)
 print("stdev of sampling distributionis:",stdev_of_sampling_dist)
-
-z_score = (mean2 - mean_of_sampling_dist)/ stdev_of_sampling_dist
+z_score =(mean_of_sampling_dist- mean)/ st_dev
 print("The z-score is:",z_score)
